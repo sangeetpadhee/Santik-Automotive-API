@@ -39,6 +39,20 @@ export const UserFeedback=async(req,res)=>{
     }
 }
 
+export const deletefeedback = async(req,res)=>{
+    try{
+        const {_id} = req.params
+        const deletefeed = await feedback.findById({_id})
+        if(!deletefeed){
+            return res.json({message:"Your Feedback Is Empty"})
+        }
+        await deletefeed.deleteOne()
+        res.json({message:"Feedback Deleted Successfully", deletefeed})
+    }catch(error){
+        console.error(error)
+        res.status(404).json({message:"Server Error"})
+    }
+}
 export const AllFeedbacksUploaded = async(req,res)=>{
     try {
         const allfeed = await feedback.find(); // Fetch all feedback
