@@ -8,12 +8,13 @@ export const FeedbackForm = async(req,res)=>{
     if(!UserFind){
         return res.status(404).json({ message: 'User not found' });
      }
+     const defaultImageUrl = "https://cdn-icons-png.flaticon.com/512/3293/3293466.png";
     const newFeedback = new feedback({
         UserDetail: {
         userId: UserFind._id,
         name: UserFind.name,
         email: UserFind.email,
-        imageLink: UserFind.profileImg,
+        imageLink: UserFind.profileImg || defaultImageUrl,
       }, 
       CarName, Feedback
     });

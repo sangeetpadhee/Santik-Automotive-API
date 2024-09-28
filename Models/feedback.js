@@ -15,8 +15,7 @@ const feedbackSchema = mongoose.Schema({
             required: true,
           },
           imageLink: {
-            type: String,
-            required: true,
+            type: String
           },
 
     },
